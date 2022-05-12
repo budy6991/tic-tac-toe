@@ -43,3 +43,10 @@ body {
 .grid-container div {
     border: solid #e8f3f1 2px;
 }
+
+.cell-element {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

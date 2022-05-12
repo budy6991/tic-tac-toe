@@ -1,16 +1,19 @@
 const gameBoard = {
-    cells : [0,1,2,3,4,5,6,7,8]
+    cells : []
 }
 
-const playerOne = (name, mark) => {
+const getPlayerData = (name, mark) => {
     this.name = name
     this.mark = mark 
     return {name, mark}
   };
 
+const gridContainer = document.querySelector('.grid-container')
 
-const playerTwo = (name, mark) => {
-    this.name = name
-    this.mark = mark 
-    return {name, mark}
-  };
+const cellElementsArray = document.querySelectorAll('.cell-element')
+
+gameBoard.cells = cellElementsArray
+
+gameBoard.cells[0].textContent = 'X'
+
+gameBoard.cells.forEach (cell )
