@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 0;
+    color: #e8f3f1;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to top right, #685394, #13e9c2);
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.player-one-container, .player-two-container {
+    height: 20vh;
+    width: 15vh;
+    border: solid #e8f3f1 2px;
+}
+
+.grid-container  {
+    height: 60vh;
+    width: 60vh;
+    border: solid #e8f3f1 2px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+
+.grid-container div {
+    border: solid #e8f3f1 2px;
+}
