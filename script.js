@@ -2,7 +2,7 @@ const gameBoard = {
     cells : []
 }
 
-const getPlayerData = (name, mark) => {
+const createPlayer = (name, mark) => {
     this.name = name
     this.mark = mark 
     return {name, mark}
@@ -14,6 +14,11 @@ const cellElementsArray = document.querySelectorAll('.cell-element')
 
 gameBoard.cells = cellElementsArray
 
-gameBoard.cells[0].textContent = 'X'
+const playerOne = createPlayer('Juan', 'O')
 
-gameBoard.cells.forEach (cell )
+gameBoard.cells.forEach (cell => 
+    cell.addEventListener ('click', function (e){
+        e.target.textContent = playerOne.mark
+    })
+    )
+
