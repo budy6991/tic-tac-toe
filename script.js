@@ -15,15 +15,13 @@ let Player = {
             this.playerOne.isPlaying = false
             this.playerTwo.isPlaying = true
             Gameboard.displayMarker(this.playerTwo.marker)
-            console.log(Gameboard.board)
+            Gameboard.banCell()
             return
-            
         }        
             this.playerTwo.isPlaying = false
             this.playerOne.isPlaying = true
             Gameboard.displayMarker(this.playerOne.marker)
-            console.log(Gameboard.board)
-        
+            Gameboard.banCell()
     }
     
 };
@@ -41,14 +39,20 @@ let Gameboard = {
         })
     },
 
-    takenCell() {
-        //If the cell has been taken, remove it from the array as an available cell to mark. 
+    banCell() {
+        this.board.forEach(cell => {
+            if (cell.textContent != '') {
+                cell.onclick = ''
+            }
+        })
+    },
 
-
+    checkWinner(){
+        
     }
 
-
 }
+
 
 
 
