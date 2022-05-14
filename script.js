@@ -1,24 +1,58 @@
-let Gameboard = {
+function createPlayer (name,marker, isPlaying) {
+    this.name = name
+    this.marker= marker
+    this.isPlaying = isPlaying
+    return {name,marker,isPlaying}
+}
 
-    Board:[],
+let Player = {
 
+    playerOne: createPlayer('Alvaro', 'X', true),
+    playerTwo: createPlayer('Juan', 'O', false),
+    togglePlayer() {
+
+        if (this.playerOne.isPlaying){
+            this.playerOne.isPlaying = false
+            this.playerTwo.isPlaying = true
+            Gameboard.displayMarker(this.playerTwo.marker)
+            return
+            
+        }
+
+        
+            this.playerTwo.isPlaying = false
+            this.playerOne.isPlaying = true
+            Gameboard.displayMarker(this.playerOne.marker)
+        
+    }
     
+};
 
+let Gameboard = {
+    
+    board: document.querySelectorAll('.cell-element'),
+
+    displayMarker(marker){
+        this.board.forEach (cell => {
+            cell.onclick = function (e){
+                e.target.textContent = marker
+                Player.togglePlayer()
+                console.log(Player)
+            }
+        })
+    },
 
 
 }
 
+    
 
-let Player = {
+    
 
-    createPlayer(name,marker, isPlaying) {
-        this.name = name
-        this.marker= marker
-        this.isPlaying = isPlaying
-        return {name,marker,isPlaying}
-    }
-                
- };
+    
+
+
+Gameboard.displayMarker(Player.playerOne.marker)
 
 
 
@@ -28,19 +62,8 @@ let Player = {
 
 
 
-//   const gridContainer = document.querySelector('.grid-container')
+
+
+
   
-//   const cellElementsArray = document.querySelectorAll('.cell-element')
-  
-//   gameBoard.cells = cellElementsArray
-  
-//   const playerOne = createPlayer('Juan', 'O', 'No')
-//   const playerTwo = createPlayer('Alvaro', 'X', 'No')
-  
-  
-//   gameBoard.cells.forEach (cell => 
-//       cell.addEventListener ('click', function (e){
-//           e.target.textContent = playerTwo.marker
-//       })
-//       )
-  
+
