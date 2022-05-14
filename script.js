@@ -15,14 +15,14 @@ let Player = {
             this.playerOne.isPlaying = false
             this.playerTwo.isPlaying = true
             Gameboard.displayMarker(this.playerTwo.marker)
+            console.log(Gameboard.board)
             return
             
-        }
-
-        
+        }        
             this.playerTwo.isPlaying = false
             this.playerOne.isPlaying = true
             Gameboard.displayMarker(this.playerOne.marker)
+            console.log(Gameboard.board)
         
     }
     
@@ -37,26 +37,22 @@ let Gameboard = {
             cell.onclick = function (e){
                 e.target.textContent = marker
                 Player.togglePlayer()
-                console.log(Player)
             }
         })
     },
 
+    takenCell() {
+        //If the cell has been taken, remove it from the array as an available cell to mark. 
+
+
+    }
+
 
 }
 
-    
-
-    
-
-    
 
 
 Gameboard.displayMarker(Player.playerOne.marker)
-
-
-
-
 
 
 
