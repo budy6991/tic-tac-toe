@@ -1,2 +1,2 @@
 # tic-tac-toe
-Tic tac toe game
+https://budy6991.github.io/tic-tac-toe/
