@@ -29,6 +29,10 @@ body {
     height: 20vh;
     width: 15vh;
     border: solid #e8f3f1 2px;
+    padding: 1em;
+    color: #e8f3f1;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .grid-container  {
@@ -51,3 +55,25 @@ body {
     align-items: center;
     font-size: 100px;
 }
+
+.modal {
+    text-align: center;
+    padding: 1em;
+    max-width: 50ch;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 1em #00371f;
+    background-image: linear-gradient(to bottom left, #545479, #00ac81);
+    color: #e8f3f1;
+    font-weight: bold;
+}
+
+.modal * {
+    margin: 1rem;
+}
+
+.modal::backdrop {
+    background: linear-gradient(to bottom left, #685394, #13e9c2);
+    opacity: .5;
+}
+

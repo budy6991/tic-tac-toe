@@ -5,36 +5,49 @@ function createPlayer (name,marker, isPlaying) {
     return {name,marker,isPlaying}
 }
 
+
 let Player = {
 
+    counter: null,
     playerOne: createPlayer('Alvaro', 'X', true),
     playerTwo: createPlayer('Juan', 'O', false),
-    togglePlayer() {
+    togglePlayer(e) {
 
         if (this.playerOne.isPlaying){
+            e.target.textContent = 'X'
             this.playerOne.isPlaying = false
             this.playerTwo.isPlaying = true
             Gameboard.displayMarker(this.playerTwo.marker)
             Gameboard.banCell()
             Gameboard.checkWinner()
+            this.counter += 1
+            console.log(this.counter)
             return
-        }        
+        }
+        e.target.textContent = 'O'
             this.playerTwo.isPlaying = false
             this.playerOne.isPlaying = true
             Gameboard.displayMarker(this.playerOne.marker)
             Gameboard.banCell()
             Gameboard.checkWinner()
+            this.counter += 1
+            console.log(this.counter)
     }
 };
 
+
+
+
 let Gameboard = {
+    
     
     board: document.querySelectorAll('.cell-element'),
     displayMarker(marker){
+        if(Player.playerOne.isPlaying ||Player.playerTwo.isPlaying )
         this.board.forEach (cell => {
             cell.onclick = function (e){
-                e.target.textContent = marker
-                Player.togglePlayer()
+                Player.togglePlayer(e)
+                
             }
         })
     },
@@ -48,6 +61,7 @@ let Gameboard = {
     },
 
     checkWinner(){
+
         if 
         ((this.board[0].textContent === 'X'
         &&this.board[1].textContent === 'X'
@@ -73,7 +87,9 @@ let Gameboard = {
         ||(this.board[2].textContent === 'X'
         &&this.board[4].textContent === 'X'
         &&this.board[6].textContent === 'X')) {
-            alert('Player One Won')
+            Gameflow.restartGame()
+            
+            Player.counter = -1
         }
 
         else if 
@@ -101,25 +117,87 @@ let Gameboard = {
         ||(this.board[2].textContent === 'O'
         &&this.board[4].textContent === 'O'
         &&this.board[6].textContent === 'O')) {
-            alert('Player Two Won')
+            Gameflow.restartGame()
+            Player.counter = -1
+            
         }
 
-        else {alert('You shat your pants')}
+        else if (Player.counter == 8) {
+            console.log('Draw')
+        }
+
+        
     }
 
 }
 
+let Gameflow = {
+
+    restartGame(){
+        Gameboard.board.forEach (cell => {
+            cell.textContent = ''
+            Player.playerOne.isPlaying = true
+            Gameboard.displayMarker(Player.playerOne.marker)
+            
+        })
+    },
+
+    
+}
+
+
+let NamesAndMarkers = {
+
+    namePlayerOne : document.getElementById('player-one-name'),
+    namePlayerTwo : document.getElementById('player-two-name'),
+    markerPlayerOne : document.getElementById('choose-mark-one'),
+    markerPlayerTwo : document.getElementById('choose-mark-two'),
+
+    getNamesAndMarks (nameOne, nameTwo, markerOne, markerTwo) {
+        let valueOne = nameOne.value
+        let valueTwo = nameTwo.value
+        let markOne = markerOne.value
+        let markTwo = markerTwo.value
+        this.displayPlayerName(valueOne,valueTwo,markOne, markTwo)
+    },
+
+    submitValues() {
+        this.getNamesAndMarks(this.namePlayerOne, this.namePlayerTwo, this.markerPlayerOne, this.markerPlayerTwo)
+    },
+
+    displayPlayerName (valueOne, valueTwo, markerOne, markerTwo) {
+        const playerOneContainer = document.querySelector('.player-one-container')
+        const playerTwoContainer = document.querySelector('.player-two-container')
+        playerOneContainer.textContent = `Player: ${valueOne} Marker: ${markerOne}`
+        playerTwoContainer.textContent = `Player: ${valueTwo} Marker: ${markerTwo}`
+    },
+    
+}
 
 
 
-Gameboard.displayMarker(Player.playerOne.marker)
+    const modal = document.querySelector('.modal')
+    const openModal = document.querySelector('.open-button')
+    const closeModal = document.querySelector('.close-button')
+    const submitForm = document.querySelector('.submit-form')
+    
+    openModal.addEventListener('click', ()=> {
+        modal.showModal();
+    })
+    
+    closeModal.addEventListener('click', ()=>{
+        modal.close();
+    })
+    
+    submitForm.addEventListener('click', function(){
+        NamesAndMarkers.submitValues()
+    })
+    
+    const restartBtn = document.querySelector('.restart-btn')
+    restartBtn.addEventListener ('click', function (e){
+        Gameflow.restartGame()
+    })
 
 
-
-
-
-
-
-
-  
+    Gameboard.displayMarker(Player.playerOne.marker)
 
