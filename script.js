@@ -5,16 +5,15 @@ function createPlayer (name,marker, isPlaying) {
     return {name,marker,isPlaying}
 }
 
-
 let Player = {
 
     counter: null,
-    playerOne: createPlayer('Alvaro', 'X', true),
-    playerTwo: createPlayer('Juan', 'O', false),
+    playerOne: createPlayer('', '', true),
+    playerTwo: createPlayer('', '', false),
     togglePlayer(e) {
 
         if (this.playerOne.isPlaying){
-            e.target.textContent = 'X'
+            e.target.textContent = this.playerOne.marker
             this.playerOne.isPlaying = false
             this.playerTwo.isPlaying = true
             Gameboard.displayMarker(this.playerTwo.marker)
@@ -24,7 +23,7 @@ let Player = {
             console.log(this.counter)
             return
         }
-        e.target.textContent = 'O'
+            e.target.textContent = this.playerTwo.marker
             this.playerTwo.isPlaying = false
             this.playerOne.isPlaying = true
             Gameboard.displayMarker(this.playerOne.marker)
@@ -35,11 +34,7 @@ let Player = {
     }
 };
 
-
-
-
 let Gameboard = {
-    
     
     board: document.querySelectorAll('.cell-element'),
     displayMarker(marker){
@@ -88,7 +83,6 @@ let Gameboard = {
         &&this.board[4].textContent === 'X'
         &&this.board[6].textContent === 'X')) {
             Gameflow.restartGame()
-            
             Player.counter = -1
         }
 
@@ -118,15 +112,13 @@ let Gameboard = {
         &&this.board[4].textContent === 'O'
         &&this.board[6].textContent === 'O')) {
             Gameflow.restartGame()
-            Player.counter = -1
-            
+            Player.counter = -1   
         }
 
         else if (Player.counter == 8) {
             console.log('Draw')
         }
-
-        
+ 
     }
 
 }
@@ -141,10 +133,8 @@ let Gameflow = {
             
         })
     },
-
-    
+  
 }
-
 
 let NamesAndMarkers = {
 
@@ -168,13 +158,15 @@ let NamesAndMarkers = {
     displayPlayerName (valueOne, valueTwo, markerOne, markerTwo) {
         const playerOneContainer = document.querySelector('.player-one-container')
         const playerTwoContainer = document.querySelector('.player-two-container')
-        playerOneContainer.textContent = `Player: ${valueOne} Marker: ${markerOne}`
-        playerTwoContainer.textContent = `Player: ${valueTwo} Marker: ${markerTwo}`
+        playerOneContainer.textContent = `PLAYER: ${valueOne} MARKER: ${markerOne}`
+        playerTwoContainer.textContent = `PLAYER: ${valueTwo} MARKER: ${markerTwo}`
+        Player.playerOne = createPlayer(valueOne, markerOne, true)
+        Player.playerTwo = createPlayer(valueTwo, markerTwo, true)
+        console.log(Player.playerOne)
+        console.log(Player.playerTwo)
     },
     
 }
-
-
 
     const modal = document.querySelector('.modal')
     const openModal = document.querySelector('.open-button')
@@ -191,13 +183,13 @@ let NamesAndMarkers = {
     
     submitForm.addEventListener('click', function(){
         NamesAndMarkers.submitValues()
+        Gameflow.restartGame()
     })
     
     const restartBtn = document.querySelector('.restart-btn')
     restartBtn.addEventListener ('click', function (e){
         Gameflow.restartGame()
     })
-
 
     Gameboard.displayMarker(Player.playerOne.marker)
 
