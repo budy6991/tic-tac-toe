@@ -12,6 +12,8 @@
     <h1>TIC TAC TOE</h1>
     <button class="restart-btn">RESTART GAME</button>
     <button class="open-button">INPUT NAMES</button>
+    <div class="score-player-one"></div>
+    <div class="score-player-two"></div>
     <dialog class="modal" id="modal">
         <form class="form" method="dialog">
             <p>
@@ -22,7 +24,6 @@
                 <label for="choose-mark-one">Choose Marker</label>
                 <select autocomplete="off" name="choose-mark-one" id="choose-mark-one">
                     <option value="X" selected >X</option>
-                    <option value="O" >O</option>
                 </select>
             <p>
             <p>
@@ -32,17 +33,21 @@
             <p>
                 <label for="choose-mark">Choose Marker</label>
                 <select autocomplete="off" name="choose-mark" id="choose-mark-two">
-                    <option value="X" >X</option>
                     <option value="O" selected>O</option>
                 </select>
             </p>
-            <button class="submit-form">Submit Form</button>
+            <button class="submit-form">Submit Players</button>
 
         </form>
         <button class="close-button">Close</button>
     </dialog>
+    <dialog class="final-winner" id="final-winner">
+    <h1></h1>
+    <button class="close-winner">Close</button>
+    </dialog>
     <div class="container">
-        <div class="player-one-container"></div>
+        <div class="player-one-container">
+        </div>
         <div class="grid-container">
             <div class="cell-element"></div>
             <div class="cell-element"></div>

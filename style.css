@@ -26,14 +26,16 @@ body {
 }
 
 .player-one-container, .player-two-container {
+    border: 0;
     height: 20vh;
     width: 15vh;
-    border: solid #e8f3f1 2px;
     padding: 1em;
     color: #e8f3f1;
     font-weight: bold;
     font-size: larger;
     border-radius: 15px;
+    background: linear-gradient(to bottom right, #685394, #9b9bff);
+    
 }
 
 .grid-container  {
@@ -126,4 +128,91 @@ body {
 .open-button:active{
     transform: translateY(4px);
     background: #685394;
+}
+
+.score-player-one{
+    position: absolute;
+    left: 7%;
+    top: 20%;
+    height: 5vh;
+    width: 15vh;
+    background: linear-gradient(to bottom right, #685394, #9b9bff);
+    color: #e8f3f1;
+    padding: 1em;
+    font-weight: bold;
+    margin: 1em;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 1em #00371f;
+}
+
+.score-player-two {
+    position: absolute;
+    right: 8%;
+    top: 20%;
+    height: 5vh;
+    width: 15vh;
+    background: linear-gradient(to bottom right, #685394, #9b9bff);
+    color: #e8f3f1;
+    padding: 1em;
+    font-weight: bold;
+    margin: 1em;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 1em #00371f;
+}
+
+.score-player-one, .score-player-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+}
+
+.submit-form, .close-button{
+    background: linear-gradient(to bottom right, #685394, #300483);
+    color: #e8f3f1;
+    border: 0;
+    font-family: monospace;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 0 1em #00ba95;
+    
+}
+
+
+.final-winner {
+    text-align: center;
+    padding: 2em;
+    max-width: 50ch;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 0 1em #00371f;
+    background-image: linear-gradient(to bottom , #545479,#3c0080);
+    color: #e8f3f1;
+    font-weight: bold;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    
+}
+
+.close-winner{
+    margin-top: 30%;
+    background: linear-gradient(to bottom right, #136077, #300483);
+    color: #e8f3f1;
+    border: 0;
+    font-family: monospace;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 0 1em #00ba95;
+}
+
+input[type=text ] {
+    background-color: #e8f3f1;
+    border-radius: 15px;
+    border: 0;
+    padding: 1em;
+    background-color: #e8f3f1;
+    box-shadow: 0 0 1em #00ba95;
 }
