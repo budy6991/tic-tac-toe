@@ -35,7 +35,7 @@ body {
     font-size: larger;
     border-radius: 15px;
     background: linear-gradient(to bottom right, #685394, #9b9bff);
-    
+    box-shadow: 0 0 1em #00371f;
 }
 
 .grid-container  {
