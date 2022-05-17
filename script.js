@@ -176,6 +176,7 @@ let NamesAndMarkers = {
     openModal.addEventListener('click', ()=> {
         modal.showModal();
     })
+
     
     closeModal.addEventListener('click', ()=>{
         modal.close();
@@ -190,6 +191,20 @@ let NamesAndMarkers = {
     restartBtn.addEventListener ('click', function (e){
         Gameflow.restartGame()
     })
+
+
+    const inputMarkerOne = document.getElementById('choose-mark-one')
+    const inputMarkerOneX = inputMarkerOne.options[0]
+    const inputMarkerOneO = inputMarkerOne.options[1]
+
+
+    const inputMarkerTwo = document.getElementById('choose-mark-two')
+    const inputMarkerTwoX = inputMarkerTwo.options[0]
+    const inputMarkerTwoO = inputMarkerTwo.options[1]
+
+   
+   
+
 
     Gameboard.displayMarker(Player.playerOne.marker)
 
