@@ -235,8 +235,11 @@ let Gameflow = {
     })
     
     submitForm.addEventListener('click', function(){
-        Gameflow.restartGame()
+        Gameboard.playerOneScore = 0
+        Gameboard.playerTwoScore = 0
+        NamesAndMarkers.displayScore()
         NamesAndMarkers.submitValues()
+        Gameflow.restartGame()
     })
     
     const restartBtn = document.querySelector('.restart-btn')
